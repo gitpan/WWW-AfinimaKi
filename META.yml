@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               WWW-AfinimaKi
-version:            0.60
+version:            0.71
 abstract:           A AfinimaKi Recommendating Engine Client
 author:
     - Matias Alejo Garcia ( matiu@cpan.org ) 
