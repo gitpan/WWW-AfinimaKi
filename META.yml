@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               WWW-AfinimaKi
-version:            0.71
+version:            0.80
 abstract:           A AfinimaKi Recommendating Engine Client
 author:
     - Matias Alejo Garcia ( matiu@cpan.org ) 
@@ -11,12 +11,13 @@ configure_requires:
 build_requires:
     ExtUtils::MakeMaker:  0
 requires:
-    Carp:              ~
-    Encode:            ~
-    perl:              5.008000
-    RPC::XML:          ~
-    RPC::XML::Client:  ~
-    Test::More:        0.88
+    Cache::Memcached::Fast:  ~
+    Carp:                 ~
+    Encode:               ~
+    perl:                 5.008000
+    RPC::XML:             ~
+    RPC::XML::Client:     ~
+    Test::More:           0.88
 no_index:
     directory:
         - t
