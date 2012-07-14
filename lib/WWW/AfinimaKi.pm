@@ -11,7 +11,7 @@ use Cache::Memcached::Fast;
 use Storable;
 use Digest::MD5	qw(md5_hex);
 
-our $VERSION = '0.82';
+our $VERSION = '0.83';
 
 use constant KEY_LENGTH     => 32;
 use constant TIME_SHIFT     => 10;
@@ -307,6 +307,10 @@ sub _set_memc_ts {
     Removes the given items from user's wish and black lists, 
     and also removes user item's rating (if any).
 
+=head4 set_null_rate 
+
+    Set rate rate as NULL. This is useful when the user has already experienced the item (watched a movie, bought the product) but did set a rate. Therefore the item shouldn't be recommended again to the user.
+
 =cut
 
 sub set_rate {
@@ -363,6 +367,13 @@ sub remove_from_lists {
     my $self = shift;
     return $self->generic_add('remove_from_lists', @_);
 }
+
+
+sub set_null_rate {
+    my $self = shift;
+    return $self->generic_add('set_null_rate', @_);
+}
+
 
 
 sub set_rates_bulk {
