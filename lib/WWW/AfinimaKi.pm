@@ -11,7 +11,7 @@ use Cache::Memcached::Fast;
 use Storable;
 use Digest::MD5	qw(md5_hex);
 
-our $VERSION = '0.83';
+our $VERSION = '0.84';
 
 use constant KEY_LENGTH     => 32;
 use constant TIME_SHIFT     => 10;
@@ -25,6 +25,7 @@ sub OP_CODE_ADD_TO_WISHLIST { return 0; }
 sub OP_CODE_ADD_TO_BLACKLIST { return 1; }
 sub OP_CODE_REMOVE_FROM_LISTS { return 2; }
 sub OP_CODE_SET_RATE { return 3; }
+sub OP_CODE_SET_NULL_RATE { return 4; }
 
 sub dbg { print STDERR __PACKAGE__ . ' '.  join(' ', @_)."\n"; }
 
