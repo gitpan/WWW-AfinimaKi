@@ -11,7 +11,7 @@ use Cache::Memcached::Fast;
 use Storable;
 use Digest::MD5	qw(md5_hex);
 
-our $VERSION = '0.84';
+our $VERSION = '0.85';
 
 use constant KEY_LENGTH     => 32;
 use constant TIME_SHIFT     => 10;
@@ -236,7 +236,7 @@ sub send_request {
 sub _set_memc_ts {
     my ($self, $email_sha256, $ts) = @_;
 
-    dbg "Storing last rate TS: $ts";
+    dbg "Storing last rate TS: " . ($ts || MAX_TS);
 
     if ( $self->{memcached} ) {
         $self->{memcached}->set('last-rate-'.$email_sha256, $ts || MAX_TS, MEMC_TTL);
@@ -328,7 +328,7 @@ sub set_rate {
     );
 
 
-    $self->_set_memc_ts($email_sha256, $ts | $^T);
+    $self->_set_memc_ts($email_sha256, $ts || $^T);
 
     return undef if _is_error($r);
 
@@ -348,7 +348,7 @@ sub generic_add {
         RPC::XML::i4->new($ts||0),
     );
 
-    $self->_set_memc_ts($email_sha256, $ts | $^T );
+    $self->_set_memc_ts($email_sha256, $ts || $^T );
 
     return undef if _is_error($r);
     return $r->value;

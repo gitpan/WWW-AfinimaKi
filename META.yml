@@ -25,4 +25,4 @@ requires:
   RPC::XML::Client: 0
   Test::More: 0.88
   perl: 5.008000
-version: 0.84
+version: 0.85
